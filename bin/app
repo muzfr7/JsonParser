@@ -1,6 +1,54 @@
 #!/usr/bin/env php
 <?php
 
+/**
+ * I'm keeping it as console application :), i like it in that way!
+ * Having PHP installed in your /usr/bin/ directory, you can access this file directly using: bin/app or php bin/app
+ */
+
+use AboutYou\Repository\CategoryRepository;
+use AboutYou\Repository\VariantRepository;
+use AboutYou\Factory\ProductRepositoryFactory;
+
 require __DIR__  . '/../vendor/autoload.php';
 
 // You app initialisation goes here
+
+print("\n=================================================================\n");
+print(strtoupper("Goal 1. Implement a basic CategoryService"));
+print("\n=================================================================\n");
+print("Displaying list of products found in the data source.");
+print("\n-----------------------------------------------------------------\n");
+
+$categoryRepo = new CategoryRepository();
+$products = $categoryRepo->getProducts(17325);
+print_r($products);
+
+
+print("\n=================================================================\n");
+print(strtoupper("Goal 2. Build a basic validator for the Variant Entity"));
+print("\n=================================================================\n");
+print("Displaying variants of a product by product name [Validator Applied]");
+print("\n-----------------------------------------------------------------\n");
+
+$variantRepo = new VariantRepository();
+$variantsByProductName = $variantRepo->getVariantsByProductName("Shorts 'Ashley'");
+print_r($variantsByProductName);
+
+
+print("\n=================================================================\n");
+print(strtoupper("Goal 3. Get different implementations of the ProductServiceInterface"));
+print("\n=================================================================\n");
+print("Implementation 1: Displaying un-ordered products");
+print("\n-----------------------------------------------------------------\n");
+
+$productRepoUnordered = ProductRepositoryFactory::create("unordered");
+print_r($productRepoUnordered->getProductsForCategory("Clothes"));
+
+print("\n-----------------------------------------------------------------\n");
+print("Implementation 2: Displaying ordered products");
+print("\n-----------------------------------------------------------------\n");
+
+$productRepoOrdered = ProductRepositoryFactory::create("ordered");
+print_r($productRepoOrdered->getProductsForCategory("Clothes"));
+
