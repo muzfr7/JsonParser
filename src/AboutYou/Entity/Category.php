@@ -2,27 +2,43 @@
 
 namespace AboutYou\Entity;
 
-
-class Category
+/**
+ * Category Entity
+ *
+ * Hierarchy Order 1
+ */
+class Category extends AbstractEntity
 {
     /**
-     * Id of the Category.
-     *
-     * @var int
-     */
-    public $id;
-
-    /**
-     * Name of the Category.
+     * Category Name
      *
      * @var string
      */
-    public $name;
+    protected $name;
 
     /**
      * List of Products that belong to a Category.
      *
      * @var \AboutYou\Entity\Product[]
      */
-    public $products = [];
+    protected $products = [];
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
 }

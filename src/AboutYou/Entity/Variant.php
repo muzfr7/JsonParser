@@ -2,55 +2,107 @@
 
 namespace AboutYou\Entity;
 
-
-class Variant
+/**
+ * Variant Entity
+ *
+ * Hierarchy Order 3
+ */
+class Variant extends AbstractEntity
 {
-    /**
-     * Id of the Variant.
-     *
-     * @var int
-     */
-    public $id;
-
     /**
      * Defines if the Variant is default for the product.
      *
      * @var bool
      */
-    public $isDefault;
+    protected $isDefault;
 
     /**
      * Defines if the Variant is Available or not.
      * 
      * @var bool
      */
-    public $isAvailable;
+    protected $isAvailable;
 
     /**
      * Number of available items in stock.
      *
      * @var int
      */
-    public $quantity;
+    protected $quantity;
 
     /**
      * Size of the Variant.
      *
-     * @var mixed
+     * @var string
      */
-    public $size;
+    protected $size;
 
     /**
      * Variant price.
      * 
      * @var \AboutYou\Entity\Price
      */
-    public $price;
+    protected $price;
 
     /**
      * Product that the Variant belongs to.
      *
      * @var \AboutYou\Entity\Product
      */
-    public $product;
+    protected $product;
+
+
+    /**
+     * @param bool $vIsDefault
+     * @param bool $vIsAvailable
+     * @param int $vQuantity
+     * @param string $vSize
+     */
+     public function __construct($vIsDefault, $vIsAvailable, $vQuantity, $vSize)
+     {
+        $this->isDefault    = $vIsDefault;
+        $this->isAvailable  = $vIsAvailable;
+        $this->quantity     = $vQuantity;
+        $this->size         = $vSize;
+     }
+
+    /**
+     * @return bool
+     */
+    public function getIsDefault()
+    {
+        return $this->isDefault;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsAvailable()
+    {
+        return $this->isAvailable;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+    
+    /**
+     * @return \AboutYou\Entity\Price
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }

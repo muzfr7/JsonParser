@@ -2,34 +2,58 @@
 
 namespace AboutYou\Entity;
 
-
+/**
+ * Price Entity
+ *
+ * Hierarchy Order 4
+ */
 class Price
 {
     /**
      * Current price.
      *
-     * @var int
+     * @var decimal
      */
-    public $current;
+    protected $current;
 
     /**
      * Old price.
      *
-     * @var int|null
+     * @var decimal|null
      */
-    public $old;
+    protected $old;
 
     /**
      * Defines if the price is sale.
      *
      * @var bool
      */
-    public $isSale;
+    protected $isSale;
 
     /**
      * Variant that the price belongs to.
      *
      * @var \AboutYou\Entity\Variant
      */
-    public $variant;
+    protected $variant;
+
+
+    /**
+     * @return decimal
+     */
+    public function getCurrent()
+    {
+        return $this->current;
+    }
+
+    /**
+     * @param decimal $current
+     * 
+     * @return $this
+     */
+    public function setCurrent($current)
+    {
+        $this->current = $current;
+        return $this;
+    }
 }

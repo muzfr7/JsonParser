@@ -2,34 +2,67 @@
 
 namespace AboutYou\Entity;
 
-
-class Product
+/**
+ * Product Entity
+ *
+ * Hierarchy Order 2
+ */
+class Product extends AbstractEntity
 {
-    /**
-     * Id of the Product.
-     *
-     * @var int
-     */
-    public $id;
-
     /**
      * Name of the Product.
      *
      * @var string
      */
-    public $name;
+    protected $name;
 
     /**
      * Description of the Product.
      * 
      * @var string
      */
-    public $description;
+    protected $description;
 
     /**
      * Unsorted list of Variants with their corresponding prices.
      * 
      * @var \AboutYou\Entity\Variant[]
      */
-    public $variants = [];
+    protected $variants = [];
+
+    /**
+     * @param string $pName
+     * @param string $pDescription
+     */
+     public function __construct($pName, $pDescription)
+     {
+        $this->name         = $pName;
+        $this->description  = $pDescription;
+     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Add Variants for this product
+     *
+     * @param \AboutYou\Entity\Variant $variant
+     */
+    public function addVariants($variant)
+    {
+        $this->variants[] = $variant;
+    }
 }
