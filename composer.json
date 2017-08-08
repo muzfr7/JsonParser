@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AboutYou": "src/"
+            "AboutYou\\": "src/"
         }
     },
     "autoload-dev": {
